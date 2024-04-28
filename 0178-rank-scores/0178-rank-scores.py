@@ -1,5 +1,7 @@
 import pandas as pd
 
+#--- Method 1 -----------
+
 def order_scores(scores: pd.DataFrame) -> pd.DataFrame:
     # Sort the scores in descending order based on the 'score' column
     scores = scores.sort_values(by='score', ascending=False)
@@ -27,3 +29,11 @@ def order_scores(scores: pd.DataFrame) -> pd.DataFrame:
 
     # Return the modified DataFrame
     return scores
+
+'''
+#--- Method 2 -----------
+def order_scores(scores: pd.DataFrame) -> pd.DataFrame:
+    scores['rank'] = scores['score'].rank(method='dense', ascending=False)
+    return scores.drop('id', axis=1).sort_values('score', ascending=False)
+
+'''
